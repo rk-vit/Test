@@ -19,7 +19,7 @@ function App() {
   useEffect(()=>{
     fetchNotes();
   },[]);
-
+  
 
   const addNote = async (newNoteTitle,newNoteText)=>{
     const newNote = {title:newNoteTitle,text:newNoteText,id:Notes.length}
