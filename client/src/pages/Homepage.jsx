@@ -10,9 +10,9 @@ function HomePage() {
   const fetchNotes = async ()=>{
     try{
       console.log("Fetching Notes of the user");
-      const response = await axios.get("http://localhost:3000/api",{withCredentials:true});
+      const response = await axios.get("https://noter-app-server.vercel.app/api",{withCredentials:true});
       console.log("notes aval :- ",response.data);
-      setNotes(response.data);
+      setNotes(response.data);  
     }catch(err){
       console.error('Error fetching Notes:',err);
     }
@@ -25,7 +25,7 @@ function HomePage() {
   const addNote = async (newNoteTitle,newNoteText)=>{
     const newNote = {title:newNoteTitle,text:newNoteText,id:Notes.length}
     try{
-      const res = await axios.post("http://localhost:3000/api",newNote,{withCredentials:true});
+      const res = await axios.post("https://noter-app-server.vercel.app/api",newNote,{withCredentials:true});
       console.log("Now work bro pls");
       await fetchNotes();
     }catch(err){
@@ -35,21 +35,14 @@ function HomePage() {
   const deleteNote = async (key)=>{
     try{
       console.log(key);
-      const response = await axios.delete("http://localhost:3000/api",{data: {key}},{withCredentials:true});
+      const response = await axios.delete("https://noter-app-server.vercel.app/api",{data: {key}},{withCredentials:true});
       console.log("Delete also work bro pls");
       await fetchNotes();
     }catch(err){
       console.error("Error deleting notes");
     }
   }
-  const  makeAPICall= async()=>{
-    console.log("API CALLED");
-    try{
-    await axios.get("http://localhost:3000/check",{withCredentials:true});
-    }catch(err){
-      console.error(err); 
-    }
-  }
+
   return (
     <div>
       <Header />

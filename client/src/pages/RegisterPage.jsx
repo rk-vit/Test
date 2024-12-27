@@ -12,7 +12,7 @@ const RegisterPage = () => {
     e.preventDefault();
     console.log("Registering user:", { name, email, password });
     try{
-        const response = await axios.post("http://localhost:3000/register",{user:email,name:name,pass:password});
+        const response = await axios.post("https://noter-app-server.vercel.app/register",{user:email,name:name,pass:password});
         if(response.status===201){
             navigate("/login");
         }

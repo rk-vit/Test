@@ -11,7 +11,7 @@ const LoginPage = () => {
     e.preventDefault();
     console.log("Logging in with:", { email, password });
     try{
-      const response = await axios.post("http://localhost:3000/login", { username: email, password: password },{withCredentials:true});
+      const response = await axios.post("https://noter-app-server.vercel.app/login", { username: email, password: password },{withCredentials:true});
       console.log(response.status);
       if(response.status==200){
           navigate("/home");
